@@ -1,0 +1,44 @@
+{% extends 'base\layout.html' %}
+
+{% block content %}
+    <!---<h1> {{head}} </h1>
+    <form action="" method="POST">
+        {{ csrf_token }}
+        
+        {{ forms }}
+        <input type="submit" value="submit" class =" btn btn-primary">
+        </form>-->
+ 
+<p>
+    <h3> {{ head }}</h3>
+</p>
+{% if msg %}
+<p>
+    {{msg}}
+</p>
+
+{% endif %}
+    <div class ='container'>
+        <div class ='row'>
+            <div class="col"></div>
+                <div class="col">
+                    {% if forms %}
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {% for field in forms %}
+                                <div class="forms-group">
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                            <input type='submit' value='AddBook' class='btn btn-outline-primary'>
+                        </form>
+                    {% else %}
+                        <p class="text-danger">No Form Available</p>
+                    {% endif %}
+                </div>
+            <div class="col"></div>
+        </div>
+    </div>
+
+
+{% endblock %}
